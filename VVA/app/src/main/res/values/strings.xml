@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">VVA</string>
+    <string name="speech_prompt">Say something&#8230;</string>
+    <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
+    <string name="tap_on_mic">Chạm để nói</string>
+    <string name="action_settings">Cài đặt</string>
+    <string name="action_syn">Tổng hợp</string>
+    <string name="action_speak">Mời nói</string>
+
+
+    <string name="default_server_app_status">client/ws/status</string>
+    <string name="default_server_app_speech">client/ws/speech</string>
+</resources>

@@ -1,0 +1,2 @@
+include ':app', ':speechkit'
+include ':library', ':app'

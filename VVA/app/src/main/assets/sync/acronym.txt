@@ -1,0 +1,766 @@
+ANĐT an ninh điều tra
+ATGT An toàn Giao thông
+ATNĐ áp thấp nhiệt đới
+ATTT An toàn Trật tự
+ATTTGT An toàn Trật tự Giao thông
+ATVSTP an toàn vệ sinh thực phẩm
+BBCVT Bộ Bưu chính Viễn thông
+BBT Ban biên tập
+BCĐ Ban chỉ đạo
+BCĐĐMĐH Ban chỉ đạo đổi mới đại học
+BCĐPCTNTƯ Ban chỉ đạo phòng chống tham nhũng trung ương
+BCĐQG Ban chỉ đạo Quốc gia
+BCĐT Bưu chính điện tử
+BCĐTS Ban chỉ đạo tuyển sinh
+BCHCD Ban chỉ huy chiến dịch
+BCHQS Bộ chỉ huy quân sự
+BCHTƯ Ban chỉ huy trung ương
+BCHTW Ban chỉ huy trung ương
+BCVT Bưu chính Viễn thông
+BD Bình Dương
+BĐ Bóng đá
+BĐN Bồ Đào Nha
+BĐS bất động sản
+BĐVN Bóng đá Việt Nam
+BGD Bộ Giáo dục
+BGH Ban giám hiệu
+BGK Ban giám khảo
+BH Bảo hiểm
+BHĐC bán hàng đa cấp
+BHL Ban huấn luyện
+BHV Ban huấn luyện
+BHXH Bảo hiểm xã hội
+BHYT Bảo hiểm y tế
+BK Bách khoa
+BKS Biển kiểm soát
+BLĐ Ban lãnh đạo
+BLHS Bộ luật Hình sự
+BP Biên phòng
+BQL Ban quản lý
+BQLDA Ban Quản lý dự án
+BTBNN bảo trợ bệnh nhân nghèo
+BTC Ban tổ chức
+BTS Ban tuyển sinh
+BTV Biên tập viên
+BTVH Bổ túc Văn hóa
+BV Bệnh viện
+BVĐK Bệnh viện Đa khoa
+BVTV Bảo vệ thực vật
+BX Bến xe
+BXL Bộ xử lý
+CA Công an
+CAHN Công an Hà Nội
+CAND Công an Nhân dân
+CATP Công an Thành phố
+CBCC cán bộ công chức
+CBCNV Cán bộ công nhân viên
+CBNV Cán bộ nhân viên
+CBQLGD cán bộ quản lý giáo dục
+CCB Cựu chiến binh
+CCHC cải cách hành chính
+CĐ Cao đẳng
+CĐDC chất độc da cam
+CĐSP Cao đẳng Sư phạm
+CĐV Cổ động viên
+CHDC Cộng hòa Dân chủ
+CHDCND Cộng hòa Dân chủ Nhân dân
+CHLB Cộng hòa Liên bang
+CHND Cộng hòa Nhân dân
+CHXHCN Cộng hòa xã hội chủ nghĩa
+CHXHCNVN Cộng hòa xã hội chủ nghĩa Việt Nam
+CK Chứng khoán
+CLB Câu lạc bộ
+CMND Chứng minh nhân dân
+CMT Chứng minh thư
+CMTND Chứng minh thư nhân dân
+CNCN Chi nhánh Cấp nước
+CNH Công nghiệp hóa
+CNKT công nhân kỹ thuật
+CNQSDĐ chứng nhận quyền sử dụng đất
+CNSH Công nghệ sinh học
+CNTN cử nhân tài năng
+CNTT Công nghệ thông tin
+CNV Công nhân viên
+CNVC Công nhân viên chức
+CP Chính phủ
+CPH Cổ phần hóa
+CPTD cổ phiếu tự do
+CPTTT chậm phát triển trí tuệ
+CPXD cấp phép xây dựng
+CQĐT Cơ quan điều tra
+CSCĐ cảnh sát cơ động
+CSDC cảnh sát dã chiến
+CSDL Cơ sở Dữ liệu
+CSĐN cảnh sát đặc nhiệm
+CSĐT Cơ sở đào tạo
+CSĐTLX cơ sở đào tạo lái xe
+CSĐTTP Cảnh sát Điều tra tội phạm
+CSĐTTPMT Cảnh sát điều tra tội phạm ma túy
+CSG Cảng Sài Gòn
+CSGT Cảnh sát giao thông
+CSHS Cảnh sát Hình sự
+CSKH Chăm sóc khách hàng
+CSKT Cảnh sát kinh tế
+CSKV Cảnh sát khu vực
+CSPK công suất phản kháng
+CSQLHC Cảnh sát Quản lý hành chính
+CSSX cơ sở sản xuất
+CSVC Cơ sở vật chất
+CSVN Cộng sản Việt Nam
+CSXH chính sách xã hội
+CTCC Công trình Công cộng
+CTCH chấn thương chỉnh hình
+CTCK công ty chứng khoán
+CTCLQG Chương trình chống lao quốc gia
+CTCN Công ty Cấp nước
+CTCP Công ty Cổ phần
+CTĐ Chữ thập đỏ
+CTĐL Công ty Điện lực
+CTN chuyển tiền nhanh
+CTSN Chấn thương sọ não
+CTTC cho thuê tài chính
+CTTH chương trình truyền hình
+CTTNHH Công ty Trách nhiệm Hữu hạn
+CTTT chương trình tiên tiến
+CTV cộng tác viên
+CTXH Công tác xã hội
+CX Cư xá
+DAGTĐT dự án giao thông đô thị
+ĐBDT đồng bào dân tộc
+ĐBP Điện Biên Phủ
+ĐBQH Đại biểu quốc hội
+ĐBSCL Đồng bằng sông Cửu Long
+ĐBTN Đại biểu thanh niên
+ĐBTSXB đánh bắt thủy sản xa bờ
+DCCH Dân chủ Cộng hòa
+ĐCS Đảng cộng sản
+ĐCSTQ Đảng cộng sản Trung Quốc
+ĐCSVN Đảng cộng sản Việt Nam
+ĐD Đại diện
+DDVN Duyên Dáng Việt Nam
+ĐH Đại học
+ĐHBC Đại học Bán công
+ĐHBK Đại học Bách khoa
+ĐHBKHN Đại học Bách khoa Hà Nội
+ĐHBKTPHCM Đại học Bách khoa Thành phố Hồ Chí Minh
+ĐHCLC đại học chất lượng cao
+ĐHCN đại học Công nghệ
+ĐHCT Đại học Cần Thơ
+ĐHĐCQT Đại học đẳng cấp quốc tế
+ĐHĐD Đại học Đông Dương
+ĐHDL Đại học Dân lập
+ĐHĐN Đại học Đà nẵng
+ĐHGTVT Đại học Giao thông Vận tải
+ĐHHB Đại học Hồng Bàng
+ĐHKH Đại học Khoa học
+ĐHKHTN Đại học Khoa học tự nhiên
+ĐHKHTNHN Đại học Khoa học tự nhiên Hà nội
+ĐHKHXH Đại học Khoa học Xã hội
+ĐHKT Đại học Kỹ thuật
+DHKTCN Đại học Kỹ thuật Công nghệ
+ĐHKTCN Đại học Kỹ thuật Công nghệ
+ĐHKTQD Đại học Kinh tế Quốc dân
+ĐHNT Đại học Nha Trang
+ĐHQG Đại học Quốc gia
+ĐHQGHN Đại học Quốc gia Hà nội
+DHS du học sinh
+ĐHSP Đại học Sư phạm
+ĐK Đăng ký
+ĐKDT đăng ký dự thi
+ĐKĐT điện kế điện tử
+ĐKHK Đăng ký hộ khẩu
+ĐKKD Đăng ký kinh doanh
+ĐKKH đăng ký kết hôn
+ĐKVĐ Đương kim vô địch
+ĐKVN Điền kinh Việt Nam
+ĐKXT đăng ký xét tuyển
+DL Du lịch
+ĐL đo lường
+ĐLTP điện kế điện tử
+ĐMN Đá Mỹ Nghệ
+DN Doanh nghiệp
+ĐN Đà Nẵng
+ĐNA Đông nam á
+ĐNÁ Đông Nam Á
+DNNN Doanh nghiệp nhà nước
+DNT Doanh nghiệp trẻ
+DNTN Doanh nghiệp Tư nhân
+DNVN doanh nghiệp Việt Nam
+DNVVN doanh nghiệp vừa và nhỏ
+ĐRL điểm rèn luyện
+DS dân số
+ĐS đường sắt
+ĐSQ đại sứ quán
+DT dự tuyển
+ĐT Đào tạo
+ĐTA đồng tính ái
+ĐTB điểm trung bình
+ĐTĐ đái tháo đường
+ĐTDĐ Điện thoại di động
+DTHT dạy thêm học thêm
+ĐTHVN Đài truyền hình Việt Nam
+ĐTLA Đồng tính luyến ái
+ĐTLT đào tạo liên thông
+ĐTNN đầu tư nước ngoài
+DTQG Đội tuyển quốc gia
+ĐTQG Đội tuyển quốc gia
+ĐTTX Đào tạo từ xa
+ĐTTXQM Đào tạo từ xa Qua mạng
+ĐTV điều tra viên
+ĐTVHD động thực vật hoang dã
+ĐTVN Đội tuyển Việt Nam
+ĐTXDCB đầu tư xây dựng cơ bả
+ĐV Đoàn viên
+ĐVHT Đơn vị học trình
+DVTMCM dịch vụ thương mại Cà Mau
+ĐVTN đoàn viên thanh niên
+ĐVTTN Đoàn viên thanh thiếu nhi
+ĐVƯT đoàn viên ưu tú
+DVVL dịch vụ việc làm
+GCMND giấy chứng minh nhân dân
+GCN Giấy chứng nhận
+GCNĐKKD Giấy chứng nhận đăng ký kinh doanh
+GCNKQT giấy chứng nhận kết quả thi
+GCNQSD giấy chứng nhận quyền sử dụng
+GCNQSDĐ Giấy chứng nhận quyền sử dụng đất
+GCNQSDĐƠ Giấy chứng nhận quyền sử dụng đất ở
+GCNQSH Giấy chứng nhận quyền sở hữu
+GCNQSHN Giấy chứng nhận quyền sở hữu nhà
+GCNQSHNƠ Giấy chứng nhận quyền sở hữu nhà ở
+GCNSK giấy chứng nhận sức khỏe
+GCQ giấy chủ quyền
+GD Giáo dục
+GDĐT Giáo dục Đào tạo
+GĐ Giám đốc
+GĐĐH giám đốc điều hành
+GDGT giáo dục giới tính
+GDNN giáo dục nghề nghiệp
+GĐT Gạch Đồng Tâm
+GĐTLA Gạch Đồng Tâm Long An
+GĐTT Giám đốc thông tin
+GDTX Giáo dục thường xuyên
+GHPGVN Giáo hội Phật giáo Việt Nam
+GK Giáo khoa
+GL Gia Lai
+GMD gái mại dâm
+GP Giấy phép
+GPLHĐB giấy phép lưu hành đặc biệt
+GPLX Giấy phép lái xe
+GPTM giải phẫu thẩm mỹ
+GPXD Giấy phép xây dựng
+GS Giáo sư
+GSTS Giáo sư Tiến sỹ
+GSTSKH Giáo sư Tiến sỹ Khoa học
+GSTT giám sát trọng tài
+GTCC Giao thông Công chánh
+GTGT Giá trị gia tăng
+GTMT giãn tĩnh mạch tinh
+GTVT Giao thông Vận tải
+GVCN Giáo viên chủ nhiệm
+GVG giáo viên giỏi
+GVTH giáo viên tiểu học
+GVTN giáo viên tình nguyện
+HAGL Hoàng Anh Gia Lai
+HB Học bổng
+HCB Huy chương bạc
+HCĐ Huy chương đồng
+HCM Hồ Chí Minh
+HCTC học chế tín chỉ
+HCTL hội chợ triển lăm
+HCV Huy chương vàng
+HCVL Hội chợ việc làm
+HD Hướng dẫn
+HDDV Hợp đồng dịch vụ
+HĐCD Hội đồng chức danh
+HĐCDGS Hội đồng chức danh giáo sư
+HĐCDGSCS Hội đồng chức danh giáo sư cơ sở
+HĐCDGSN Hội đồng Chức danh giáo sư ngành
+HĐCDGSNN Hội đồng Chức danh giáo sư nhà nước
+HĐCT hội đồng coi thi
+HĐĐB Hội đồng Đền bù
+HĐĐG Hội đồng định giá
+HĐH Hệ điều hành
+HĐKT hợp đồng kinh tế
+HDLD Hợp đồng lao động
+HĐDV Hợp đồng dịch vụ
+HĐLĐ Hợp đồng lao động
+HDND Hội đồng nhân dân
+HĐND Hội đồng nhân dân
+HĐNDTP Hội đồng nhân dân thành phố
+HĐNT hội đồng nghệ thuật
+HĐQT Hội đồng Quản trị
+HĐTĐ Hội đồng thẩm định
+HĐTS Hội đồng tuyển sinh
+HĐTT Hội đồng Trọng tài
+HDV hướng dẫn viên
+HĐXX Hội đồng xét xử
+HH Hoa hậu
+HHTG Hoa hậu Thế giới
+HHVN Hoa hậu Việt Nam
+HK Học kỳ
+HKDD Hàng không dân dụng
+HKDDVN Hàng không dân dụng Việt Nam
+HKHKT hội khoa học kỹ thuật
+HKHKTVN hội khoa học kỹ thuật Việt Nam
+HKTT hộ khẩu thường trú
+HL huấn luyện
+HLBĐ Hoa Lâm Bình Định
+HLQG Huấn luyện Quốc gia
+HLV Huấn luyện viên
+HMNĐ hiến máu nhân đạo
+HN Hà Nội
+HND Hội nông dân
+HNGĐ hôn nhân gia đình
+HNHT hội nghị hiệp thương
+HNV Hội Nhà văn
+HPHN Hòa Phát Hà Nội
+HP Hải Phòng
+HQĐT Hải quan điện tử
+HQHP Hải quan Hải phòng
+HS Học sinh
+HSBC Học sinh bán công
+HSĐKDT Hồ sơ đăng ký dự thi
+HSG học sinh giỏi
+HSGQG học sinh giỏi Quốc gia
+HSGQT học sinh giỏi Quốc tế
+HSPT học sinh phổ thông
+HSSV Học sinh sinh viên
+HSV Hội sinh viên
+HTCĐ học tập cộng đồng
+HTXDVNN Hợp tác xã dịch vụ nông nghiệp
+HV Học viên
+HVANND Học viện An ninh Nhân dân
+HVBCVT Học viện Bưu chính Viễn thông
+HVCH Học viên Cao học
+HVCNBCVT Học viện Công nghệ Bưu chính Viễn thông
+HVCS Học viện Cảnh sát
+HVCSND Học viện Cảnh sát Nhân dân
+HVKHQS Học viện Khoa học Quân sự
+HVN Honda Việt Nam
+HVNCL Hàng Việt Nam chất lượng
+HVNCLC Hàng Việt Nam chất lượng cao
+HVNH Học viện Ngân hàng
+HVTC Học viện Tài chính
+IS I S
+KBNN Kho bạc Nhà nước
+KCB khám chữa bệnh
+KCN Khu công nghiệp
+KCX Khu chế xuất
+KDC khu dân cư
+KĐCL Kiểm định chất lượng
+KĐCLGD Kiểm định chất lượng Giáo dục
+KDCN Kiểu dáng công nghiệp
+KDDV kinh doanh dịch vụ
+KDĐV Kiểm dịch động vật
+KDHĐC kinh doanh hàng đa cấp
+KDL Khu du lịch
+KDN Kinh doanh nhà
+KDNPN Kinh doanh nhà Phú Nhuận
+KĐS Khu đường sông
+KĐT Khu đô thị
+KĐTM Khu đô thị mới
+KH Kế hoạch
+KHCN Khoa học Công nghệ
+KHĐT Kế hoạch Đầu tư
+KHKD Kế hoạch kinh doanh
+KHKT Khoa học Kỹ thuật
+KHKTHN Khoa học Kỹ thuật Hạt nhân
+KHKTHS Khoa học kỹ thuật hình sự
+KHKTNN Khoa học kỹ thuật Nông nghiệp
+KHKTNNMN Khoa học kỹ thuật Nông nghiệp miền Nam
+KHLS Khoa học lịch sử
+KHTN Khoa học Tự nhiên
+KHXH Khoa học Xãn hội
+KK Khuyến khích
+KKT khu kinh tế
+KL Kết luận
+KLĐT kết luận điều tra
+KLQG Kỷ lục quốc gia
+KN Khuyến nông
+KNTC khiếu nại tố cáo
+KP khu phố
+KS Khách sạn
+KSND Kiểm sát nhân dân
+KSNDTC Kiểm sát Nhân dân Tối cao
+KST ký sinh trùng
+KSV kiểm sát viên
+KTM Khu thương mại
+KTNN Kinh tế nhà nước
+KTQD kinh tế quốc dân
+KTQDHN Kinh tế Quốc dân Hà Nội
+KTS Kiến trúc sư
+KTTV khí tượng thủy văn
+KTV Kỹ thuật viên
+KTX Ký túc xá
+KV Khu vực
+LB Liên bang
+LĐ Lao động
+LĐBĐ Liên đoàn bóng đá
+LĐBĐVN Liên đoàn bóng đá Việt Nam
+LĐLĐ Liên đoàn Lao động
+LĐTB Lao động Thương binh
+LĐTBXH Lao động Thương binh Xã hội
+LHP Liên hoan phim
+LHPN Liên hiệp Phụ nữ
+LHQ Liên hiệp quốc
+LHS lưu học sinh
+LHTN Liên hiệp Thanh niên
+LL lực lượng
+LLLĐ Lực lượng lao động
+LS Luật sư
+LSQ Lãnh sự quán
+LTQĐTD lây truyền qua đường tình dục
+MBH mũ bảo hiểm
+MHX Mùa hè xanh
+MS Mã số
+MTĐT Máy tính điện tử
+MTTQ Mặt trận tổ quốc
+MTTQVN Mặt trận tổ quốc Việt Nam
+MTXT Máy tính xách tay
+NC Nghiên cứu
+NCC nhà cung cấp
+NCKH nghiên cứu khoa học
+NCL ngoài công lập
+NCS Nghiên cứu sinh
+NCTT Nghiên cứu thị trường
+ND Nhân dân
+NĐ Nghị định
+NDT Nhân dân tệ
+NĐT Nhà đầu tư
+NĐVN người đẹp Việt Nam
+NH Ngân hàng
+NHCSXH Ngân hàng Chính sách xã hội
+NHCTCN Ngân hàng Công thương Chi nhánh
+NHCTHP Ngân hàng Công thương Hải Phòng
+NHCTVN Ngân hàng Công thương Việt Nam
+NHĐA Ngân hàng Đông Á
+NHĐÁ Ngân hàng Đông Á
+NHĐT Ngân hàng Đầu tư
+NHĐTPT Ngân hàng Đầu tư phát triển
+NHM Người hâm mộ
+NHNN Ngân hàng nhà nước
+NHNNVN Ngân hàng Nhà nước Việt Nam
+NHNT Ngân hàng Ngoại thương
+NHTM Ngân hàng Thương mại
+NHTMCP ngân hàng thương mại cổ phần
+NHTMNN ngân hàng thương mại nhà nước
+NHTMQD ngân hàng thương mại quốc doanh
+NHTƯ Ngân hàng Trung ương
+NHTW Ngân hàng Trung ương
+NK Nhập khẩu
+NKBV nhiễm khuẩn bệnh viện
+NKKN Nam Kỳ Khởi Nghĩa
+NKNV Năng khiếu Nghiệp vụ
+NKT người khuyết tật
+NL Năng lượng
+NLĐ Người lao động
+NLMT năng lượng mặt trời
+NLS nông lâm sản
+NLTT năng lượng tái tạo
+NMĐ nhà máy điện
+NN Nhà nước
+NNCĐDC Nạn nhân chất độc da cam
+NPP Nhà phân phối
+NQ Nghị quyết
+NQD ngoài quốc doanh
+NS Nghệ sỹ
+NSND Nghệ sỹ nhân dân
+NSNN ngân sách nhà nước
+NST nhiễm sắc thể
+NSUT Nghệ sỹ ưu tú
+NSƯT Nghệ sỹ ưu tú
+NTBD Nghệ thuật biểu diễn
+NTK nhà thiết kế
+NVH Nhà văn hóa
+NVHTN Nhà Văn hóa Thanh niên
+NXB Nhà xuất bản
+NXBGD Nhà xuất bản Giáo dục
+NXBKHXH Nhà xuất bản Khoa học Xã hội
+NXBQĐND Nhà xuất bản Quân đội Nhân dân
+NXBTN Nhà xuất bản Tự nhiên
+NXBVHTT Nhà xuất bản Văn hóa Nghệ thuật
+PCBL phòng chống bão lụt
+PCBTH phổ cập bậc trung học
+PCC Phòng công chứng
+PCCC Phòng cháy chửa cháy
+PCGD phổ cập giáo dục
+PCGDBTH phổ cập giáo dục bậc trung học
+PCGDTH phổ cập giáo dục tiểu học
+PCGDTHCS phổ cập giáo dục trung học cơ sở
+PCLBMN phòng chống lụt bão miền Nam
+PCLBTƯ phòng chống lụt bão Trung ương
+PCLBTW phòng chống lụt bão Trung ương
+PCTH phổ cập tiểu học
+PCTHCS phổ cập trung học cơ sở
+PCTN Phòng chống tệ nạn
+PCTNXH Phòng chống tệ nạn xã hội
+PCTPCNC Phòng chống tội phạm công nghệ cao
+PGĐ Phó giám đốc
+PGHH Phật giáo Hòa Hảo
+PGS Phó Giáo sư
+PHHS phụ huynh học sinh
+PL Pháp luật
+PM phần mềm
+PN Phụ nữ
+PP phương pháp
+PS Phóng sự
+PTCS Phổ thông cơ sở
+PTN phòng thí nghiệm
+PTNT Phát triển Nông thôn
+PTT Phó thủ tướng
+PTTH Phổ thông trung học
+PTTM Phẫu thuật thẩm mỹ
+PTTT Phát triển trẻ thơ
+PTV Phát thanh viên
+PV Phóng viên
+PY Phú Yên
+QBLTD Quĩ bảo lãnh tín dụng
+QC Quy chế
+QCDCCS quy chế dân chủ cơ sở
+QCGNHH Quy chế ghi nhãn hàng hóa
+QCHQ quan chức hải quan
+QCKDTXD Quy chế kinh doanh thép xây dựng
+QCKT quy chuẩn kĩ thuật
+QĐ Quyết định
+QĐND Quân đội nhân dân
+QG Quốc gia
+QH Quốc hội
+QHTD Quan hệ tình dục
+QK Quân khu
+QL Quản lý
+QLD Quản lý dược
+QLDA Quản lý dự án
+QLĐT Quản lý Đào tạo
+QLTT Quản lý thị trường
+QN Quảng Ninh
+QSD quyền sử dụng
+QSDĐ quyền sử dụng đất
+QTKD Quản trị Kinh doanh
+RLC rối loạn cương
+RLCD rối loạn cương dương
+SBD Số báo danh
+SD sử dụng
+SDĐ sử dụng đất
+SDĐNN sử dụng đất nông nghiệp
+SĐH sau đại học
+SĐK số đăng ký
+SĐNĐ Sông Đà Nam Định
+SĐT số điện thoại
+SĐTLA Sơn Đồng Tâm Long An
+SG Sài Gòn
+SGD Sở giáo dục
+SGGP Sài gòn giải phóng
+SGK Sách giáo khoa
+SGTT Sài Gòn Tiếp Thị
+SGTVT Sở Giao thông Vận tải
+SH Sinh hoạt
+SHNN Sở hữu nhà nước
+SHTD sinh hoạt tình dục
+SHTT sở hữu trí tuệ
+SK Sân khấu
+SKHCN Sở Khoa học Công nghệ
+SKSS sức khỏe sinh sản
+SLNA Sông Lam Nghệ An
+SMĐH Sao mai Điểm hẹn
+SN sinh năm
+SNN sở Nông nghiệp
+SPKT Sư phạm kỹ thuật
+SS Sĩ số
+SV Sinh viên
+SVĐ Sân vận động
+SVĐV Sao Vàng Đất Việt
+SVHS Sinh viên học sinh
+SVNCKH Sinh viên nghiên cứu khoa học
+SVTN Sinh viên tình nguyện
+SVVN Sinh viên Việt Nam
+SX Sản xuất
+SXH sốt xuất huyết
+SYLL Sơ yếu lý lịch
+TACN thức ăn chăn nuôi
+TAND Tòa án nhân dân
+TANDTC Tòa án Nhân dân Tối cao
+TBD Thái Bình Dương
+TBKTSG Thời báo kinh tế Sài Gòn
+TBKTVN Thời báo Kinh tế Việt Nam
+TBMMN Tai biến mạch máu não
+TBT Tổng biên tập
+TBTT thuê bao trả trước
+TBXH Thương binh Xã hội
+TCCN trung cấp chuyên nghiệp
+TCDL Tổng cục Du lịch
+TCHL tuyệt chủng hàng loạt
+TCHQ Tổng cục hải quan
+TCMN thủ công mỹ nghệ
+TCMR tiêm chủng mở rộng
+TCN trung cấp nghề
+TCNN Tài chính nhà nước
+TCS Trịnh Công Sơn
+TCT Tổng công ty
+TCTD tổ chức tín dụng
+TCTT trò chơi trực tuyến
+TCTTMSG Tổng công ty Thương mại Sài Gòn
+TCVN Tiêu chuẩn Việt Nam
+TCVSG Thảo Cầm Viên Sài Gòn
+TD tình dục
+TĐ từ điển
+TĐBKVN Từ Điển Bách Khoa Việt Nam
+TĐC tái định cư
+TDTT Thể dục thể thao
+TDTTQG Thể dục thể thao Quốc gia
+TDV trình dược viên
+TG thế giới
+TGĐ Tổng giám đốc
+TGPL trợ giúp pháp lý
+THCB Trung học Chuyên ban
+THCN Trung học chuyên nghiệp
+THCS Trung học cơ sở
+THCSND Thực hiện chính sách nhà đất
+THCSNĐ Thực hiện chính sách nhà đất
+THDL trung học dân lập
+THGT tín hiệu giao thông
+THKTS truyền hình kỹ thuật số
+THKTSMĐ truyền hình kỹ thuật số mặt đất
+THPT Trung học phổ thông
+THQG thương hiệu quốc gia
+THS Tín hiệu số
+THTT truyền hình trực tiếp
+THVN Truyền hình Việt Nam
+THX Tân hoa xã
+TK thiết kế
+TKCN tìm kiếm cứu nạn
+TM Thương mại
+TMCP Thương mại cổ phần
+TMĐT Thương mại Điện tử
+TMN Thép Miền Nam
+TN Thanh niên
+TNCN thu nhập cá nhân
+TNCS Thanh niên cộng sản
+TNĐH tốt nghiệp đại học
+TNDN Thu nhập doanh nghiệp
+TNĐT Thoát nước Đô thị
+TNGT Tai nạn giao thông
+TNHC Trinh nữ hoàng cung
+TNHH Trách nhiệm hữu hạn
+TNK thuế nhập khẩu
+TNKQ trắc nghiệm khách quan
+TNLN thanh niên lập nghiệp
+TNMT Tài nguyên Môi trường
+TNND Tiếng nói Nhân dân
+TNNT thanh niên nông thôn
+TNO Thanh niên Online
+TNS tu nghiệp sinh
+TNSV thanh niên sinh viên
+TNSVVN thanh niên sinh viên Việt Nam
+TNT Tình Nguyện Trẻ
+TNTN thanh niên tình nguyện
+TNTP Thiếu niên Tiền phong
+TNTX Tạm nhập tái xuất
+TNV Tình nguyện viên
+TNVN Thanh niên Việt Nam
+TNXH tệ nạn xã hội
+TNXK Thanh niên xung kích
+TNXP Thanh niên xung phong
+TPCĐ trái phiếu chuyển đổi
+TPCN Thực phẩm chức năng
+TPCT Thành phố Cần Thơ
+TPHCM Thành phố Hồ Chí Minh
+TP Thành phố
+TPO Tiên phong Online
+TQ Trung Quốc
+TS Tiến sĩ
+TSDĐ tiền sử dụng đất
+TSKH Tiến sỹ Khoa học
+TSN Tân Sơn Nhất
+TTBĐS thị trường bất động sản
+TTBDVH Trung tâm bồi dưỡng văn hóa
+TTBDVHNG Trung tâm bồi dưỡng văn hóa ngoài giờ
+TTBVQTG Trung tâm bảo vệ quyền tác giả
+TTBYT Trang thiết bị y tế
+TTCT Thể Thao Cuối Tuần
+TTDD Trung tâm Dinh dưỡng
+TTĐM Trung tâm Điện máy
+TTDV Trung tâm Dịch vụ
+TTDVVL Trung tâm Dịch vụ việc làm
+TTGDCK Trung tâm giao dich chứng khoán
+TTGDTX Trung tâm Giáo dục thường xuyên
+TTGT Trật tự Giao thông
+TTH Thừa Thiên Huế
+TTHTCĐ Trung tâm học tập cộng đồng
+TTHTSV trung tâm hỗ trợ sinh viên
+TTK tổng thư ký
+TTLT Thông tư liên tịch
+TTN thanh thiếu niên
+TTNN Trung tâm Ngoại Ngữ
+TTO Tuổi trẻ online
+TTQLKT trật tự quản lý kinh tế
+TTTH Trung tâm Tin học
+TTTM trung tâm thương mại
+TTTON thụ tinh trong ống nghiệm
+TTTTN trí thức trẻ tình nguyện
+TTVGT trật tự viên giao thông
+TTVH Trung tâm Văn hóa
+TTXH trật tự xã hội
+TTXVN Thông tấn xã Việt Nam
+TTYT Trung tâm y tế
+TTYTDP Trung tâm Y tế dự phòng
+TVHK tiếp viên hàng không
+TVN Than Việt Nam
+TVQH Thường vụ Quốc hội
+TVV tư vấn viên
+TƯ Trung ương
+TW Trung ương
+TX Thị xã
+UBCKNN Ủy ban Chứng khoán Nhà nước
+UBKT Uỷ ban Kiểm tra
+UBMTTQ Ủy ban Mạt trận Tổ quốc
+UBMTTQVN Ủy ban Mặt trận Tổ quốc Việt Nam
+UBND Ủy ban Nhân dân
+UBNDTP Ủy ban Nhân dân Thành phố
+UBTDTT Ủy ban Thể dục Thể thao
+UBTVQH Ủy ban thường vụ Quốc hội
+ƯCV ứng cử viên
+USD Đô la
+UT ung thư
+UV Ủy viên
+UVBCH Ủy viên ban chấp hành
+UVBCT Ủy viên Bộ chính trị
+VCK Vòng chung kết
+VD ví dụ
+VĐ Vô địch
+VĐQG Vô địch Quốc gia
+VĐV Vận động viên
+VĐVQG Vận động viên Quốc gia
+VH Văn hóa
+VHGDTNTN Văn hóa Giáo dục Thanh niên Thiếu niên
+VHNT Văn học Nghệ thuật
+VHTT Văn hóa Thông tin
+VKS Viện Kiểm sát
+VKSND Viện Kiểm sát Nhân dân
+VKSNDTC Viện Kiểm sát Nhân dân Tối cao
+VL Vật lý
+VLTK Võ Lâm Truyền Kỳ
+VLXD Vật liệu xây dựng
+VN Việt Nam
+VND Việt Nam Đồng
+VNĐ Việt Nam Đồng
+VP Văn phòng
+VPCP Văn phòng chính phủ
+VPĐD Văn phòng đại diện
+VQG Vườn Quốc gia
+VS Vệ sinh
+XD Xây dựng
+XDCB xây dựng cơ bản
+XĐGN Xoá đói giảm nghèo
+XDHK Xăng dầu hàng không
+XH Xã hội
+XHCN Xã hội chủ nghĩa
+XHH xã hội hóa
+XK Xuất khẩu
+XKLĐ xuất khẩu lao động
+XN Xí nghiệp
+XNK Xuất nhập khẩu
+XSKT xổ số kiến thiết
+XTTM Xúc tiến thương mại
+XX Xét xử
+YKVN Y khoa Việt Nam
+YTDP Y tế Dự phòng

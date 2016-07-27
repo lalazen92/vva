@@ -1,0 +1,22 @@
+trình duyệt->chrome
+trình nghe nhạc->music zing nhaccuatui
+thư viện->photos gallery
+bản đồ->maps
+đồng hồ->clock
+danh bạ->contacts
+tin nhắn->message
+thư điện tử->gmail
+mạng xã hội->facebook
+ghi nhớ->note supernote
+máy ảnh->camera
+từ điển->dict dictionary
+tùy chọn->settings option
+thu âm->audio recorder
+xem lịch->calendar
+tính toán->calculator
+thời tiết->weather
+quản lý file->filemanager
+flash->flashlight
+google->google app
+camera360->camera
+báo nét->BáoNet BaoNet
