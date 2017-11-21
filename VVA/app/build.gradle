@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "vav.cyberspace.viettel.vva"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -17,17 +17,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    useLibrary  'org.apache.http.legacy'
 }
+
+allprojects {
+    repositories {
+        maven { url 'https://maven.google.com' }
+    }
+}
+
 repositories{
     flatDir{
         dirs 'libs'
     }
 }
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.0.2'
+    compile 'com.android.support:appcompat-v7:26.0.2'
     compile project(':library')
     compile project(':speechkit')
+    implementation files('libs/org.apache.http.legacy.jar')
+    implementation files('libs/httpclient-android-4.3.5.1.jar')
+    implementation files('libs/httpmime-4.3.5.jar')
 }
 ant.importBuild 'assets.xml'
 preBuild.dependsOn(list, checksum)

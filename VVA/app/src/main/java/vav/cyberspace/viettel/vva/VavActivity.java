@@ -1,9 +1,11 @@
 package vav.cyberspace.viettel.vva;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -11,12 +13,16 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.SystemClock;
-import android.support.v7.app.ActionBarActivity;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -44,6 +50,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -72,12 +79,12 @@ import jp.naist.ahclab.speechkit.SpeechKit;
 import vav.cyberspace.viettel.vva.wavformview.WaveformView;
 
 
-public class VavActivity extends ActionBarActivity  implements Recognizer.Listener{
+public class VavActivity extends AppCompatActivity implements Recognizer.Listener {
     private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
     private static final String AUDIO_RECORDER_FOLDER = "AudioRecorder";
     private static final String AUDIO_RECORDER_TEMP_FILE = "record_temp.raw";
     public static String mResourcePath;
-    static public Context  mContext;
+    static public Context mContext;
     private TextView txtSpeechInput;
     private ImageButton btnSpeak;
     private TextView mTxtTouch;
@@ -96,26 +103,31 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
 
     Thread updateThread;
 
-    String [] test_recog_text = {"trung tâm Không gian mạng viettel xin chào các bạn", "chúng tôi muốn mang công nghệ xử lý tiếng nói đến mọi người dân việt nam", "nhằm thay đổi cách chúng ta làm việc và tận hưởng cuộc sống", "nếu bạn là các kỹ sư yêu thích công nghệ và có kinh nghiệm trong lĩnh vực này", "đừng ngần ngại hãy liên hệ với chúng tôi qua số điện thoại 0919114252"};
+    String[] test_recog_text = {"trung tâm Không gian mạng viettel xin chào các bạn", "chúng tôi muốn mang công nghệ xử lý tiếng nói đến mọi người dân việt nam", "nhằm thay đổi cách chúng ta làm việc và tận hưởng cuộc sống", "nếu bạn là các kỹ sư yêu thích công nghệ và có kinh nghiệm trong lĩnh vực này", "đừng ngần ngại hãy liên hệ với chúng tôi qua số điện thoại 0919114252"};
     int count_step_test = 0;
 
-//    private ImageButton imagebutton;
+    //    private ImageButton imagebutton;
 //    private GifAnimationDrawable little, big;
     private static final int RECORDER_BPP = 16;
 
 
+    public static ArrayList<String> mMappingSynthesis = new ArrayList<>();
+    public ArrayList<String> mMappingLanchApp = new ArrayList<>();
 
-    public static ArrayList<String>  mMappingSynthesis = new ArrayList<>();
-    public ArrayList<String>  mMappingLanchApp = new ArrayList<>();
+    final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 102;
+    public static final int MY_NORMAL_PERMISSIONS_REQUEST = 1411;
+    private static final int MY_OVERLAY_PERMISSIONS_REQUEST = 1412;
 
-    void init_speechkit(ServerInfo serverInfo){
+    void init_speechkit(ServerInfo serverInfo) {
         SpeechKit _speechKit = SpeechKit.initialize(getApplication().getApplicationContext(), "", "", serverInfo);
         _currentRecognizer = _speechKit.createRecognizer(VavActivity.this);
         _currentRecognizer.connect();
     }
-    public static Context getContext(){
+
+    public static Context getContext() {
         return mContext;
     }
+
     @Override
     public void onPartialResult(String result) {
         txtSpeechInput.setText(result);
@@ -124,21 +136,23 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
     @Override
     public void onFinalResult(String result) {
         txtSpeechInput.setText(result);
-     //   mTxtTouch.setText("Chạm để nói");
+        //   mTxtTouch.setText("Chạm để nói");
     }
 
     @Override
     public void onFinish(String reason) {
-    //    mTxtTouch.setText("Chạm để nói");
+        //    mTxtTouch.setText("Chạm để nói");
 /*        if (lst_dialog.isShowing())
             lst_dialog.dismiss();*/
     }
+
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
         LoadInstalledApp.mPlayingSynthesiFile = false;
         SynthesisActivity.mPlayingSynthesiFile = false;
     }
+
     @Override
     public void onReady(String reason) {
         btnSpeak.setEnabled(true);
@@ -159,23 +173,23 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
 
     @Override
     public void onRecordingBegin() {
-   //     mTxtTouch.setText("Đang ghi âm...");
+        //     mTxtTouch.setText("Đang ghi âm...");
     }
 
     @Override
     public void onRecordingDone() {
-     //   mTxtTouch.setText("Đợi chút...");
+        //   mTxtTouch.setText("Đợi chút...");
     }
 
     @Override
     public void onError(Exception error) {
-    //    mTxtTouch.setText("Chạm để nói");
+        //    mTxtTouch.setText("Chạm để nói");
       /*  Toast.makeText(getApplicationContext(), error.getMessage().toString(),
                 Toast.LENGTH_SHORT).show();*/
     }
 
     private void onRecord(boolean start) {
-        if(mStop == true)
+        if (mStop == true)
             return;
 
         if (!start) {
@@ -203,80 +217,87 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
 
     private String getFilename() {
         String filepath = Environment.getExternalStorageDirectory().getPath();
-        File file = new File(filepath,AUDIO_RECORDER_FOLDER);
+        File file = new File(filepath, AUDIO_RECORDER_FOLDER);
 
-        if(!file.exists()){
+        if (!file.exists()) {
             file.mkdirs();
         }
         return (file.getAbsolutePath() + "/" + "vva" + AUDIO_RECORDER_FILE_EXT_WAV);
     }
-    private String getSynthesisFilename(){
-        String filepath = Environment.getExternalStorageDirectory().getPath();
-        File file = new File(filepath,AUDIO_RECORDER_FOLDER);
 
-        if(!file.exists()){
+    private String getSynthesisFilename() {
+        String filepath = Environment.getExternalStorageDirectory().getPath();
+        File file = new File(filepath, AUDIO_RECORDER_FOLDER);
+
+        if (!file.exists()) {
             file.mkdirs();
         }
 
         return (file.getAbsolutePath() + "/" + "syn" + AUDIO_RECORDER_FILE_EXT_WAV);
     }
-    private String getFilenameFlac(){
+
+    private String getFilenameFlac() {
         String flacFile = getFilename() + ".flac";
         return flacFile;
     }
-    private String getTempFilename(){
-        String filepath = Environment.getExternalStorageDirectory().getPath();
-        File file = new File(filepath,AUDIO_RECORDER_FOLDER);
 
-        if(!file.exists()){
+    private String getTempFilename() {
+        String filepath = Environment.getExternalStorageDirectory().getPath();
+        File file = new File(filepath, AUDIO_RECORDER_FOLDER);
+
+        if (!file.exists()) {
             file.mkdirs();
         }
 
-        File tempFile = new File(filepath,AUDIO_RECORDER_TEMP_FILE);
+        File tempFile = new File(filepath, AUDIO_RECORDER_TEMP_FILE);
 
-        if(tempFile.exists())
+        if (tempFile.exists())
             tempFile.delete();
 
         return (file.getAbsolutePath() + "/" + AUDIO_RECORDER_TEMP_FILE);
     }
-    private String getAcronymConfig(){
-        String filepath = Environment.getExternalStorageDirectory().getPath();
-        File file = new File(filepath,AUDIO_RECORDER_FOLDER);
 
-        if(!file.exists()){
+    private String getAcronymConfig() {
+        String filepath = Environment.getExternalStorageDirectory().getPath();
+        File file = new File(filepath, AUDIO_RECORDER_FOLDER);
+
+        if (!file.exists()) {
             file.mkdirs();
         }
         return (file.getAbsolutePath() + "/" + "acronym.txt");
     }
-    private String getUnitofMeasureConfig(){
-        String filepath = Environment.getExternalStorageDirectory().getPath();
-        File file = new File(filepath,AUDIO_RECORDER_FOLDER);
 
-        if(!file.exists()){
+    private String getUnitofMeasureConfig() {
+        String filepath = Environment.getExternalStorageDirectory().getPath();
+        File file = new File(filepath, AUDIO_RECORDER_FOLDER);
+
+        if (!file.exists()) {
             file.mkdirs();
         }
         return (file.getAbsolutePath() + "/" + "unit-of-measure.txt");
     }
-    private String getResourcePathConfig(){
-        String filepath = Environment.getExternalStorageDirectory().getPath();
-        File file = new File(filepath,AUDIO_RECORDER_FOLDER);
 
-        if(!file.exists()){
+    private String getResourcePathConfig() {
+        String filepath = Environment.getExternalStorageDirectory().getPath();
+        File file = new File(filepath, AUDIO_RECORDER_FOLDER);
+
+        if (!file.exists()) {
             file.mkdirs();
         }
         return (file.getAbsolutePath() + "/");
     }
-    private void startRecording(){
+
+    private void startRecording() {
         mTxtTouch.setText("Đang ghi âm...");
         mWaveformView.setVisibility(View.VISIBLE);
         btnSpeak.setVisibility(View.GONE);
         txtSpeechInput.setText("");
-        if(mPreferences.getRecogType().compareToIgnoreCase("nogo") == 0){
+        if (mPreferences.getRecogType().compareToIgnoreCase("nogo") == 0) {
             ExtAudioRecorderModified.CAPTURE_SAMPLE_RATE_HZ = 16000;
 
-        //    mStop = true;
-        //    resetAquisition();
-        }else if(mPreferences.getRecogType().compareToIgnoreCase("go") == 0){
+            //    mStop = true;
+            //    resetAquisition();
+        } else if (mPreferences.getRecogType().compareToIgnoreCase("go") == 0) {
             ExtAudioRecorderModified.CAPTURE_SAMPLE_RATE_HZ = 8000;
          /*   audioRecorder = ExtAudioRecorderModified.getInstance();
             audioRecorder.setOutputFile(getFilename());
@@ -292,7 +313,7 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
 
     }
 
-    public void decodeVoice(){
+    public void decodeVoice() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -307,16 +328,17 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         String strPort = "8989";
         new RecognizerServiceTask().execute(strServer, strPort, getFilename());
     }
-    private void stopRecording(){
+
+    private void stopRecording() {
 
         audioRecorder.release();
         mStartRecording = false;
         mStop = true;
 
         startTime = System.currentTimeMillis();
-        if(mPreferences.getRecogType().compareToIgnoreCase("nogo") == 0){
+        if (mPreferences.getRecogType().compareToIgnoreCase("nogo") == 0) {
             decodeVoice();
-        }else if(mPreferences.getRecogType().compareToIgnoreCase("go") == 0){
+        } else if (mPreferences.getRecogType().compareToIgnoreCase("go") == 0) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -338,6 +360,7 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
 
         file.delete();
     }
+
     private void deletewavFile() {
         File file = new File(getFilename());
 
@@ -349,7 +372,7 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         // TODO Auto-generated method stub
 
         Wav2Flac flacEncoder = new Wav2Flac();   // <---- Error
-       flacEncoder.convertWavToFlac(wavFilename, flacFilename);
+        flacEncoder.convertWavToFlac(wavFilename, flacFilename);
     }
 
     private class RecognizerServiceTask extends AsyncTask<String, Void, String> {
@@ -366,11 +389,12 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-         //   deletewavFile();
+            //   deletewavFile();
             processDecodedData(result);
         }
     }
-    public void processDecodedData(String result){
+
+    public void processDecodedData(String result) {
 
         runOnUiThread(new Runnable() {
             @Override
@@ -387,26 +411,26 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         mStartRecording = false;
 
 
-        if(result.length() == 0){
+        if (result.length() == 0) {
 
             return;
         }
 
 
         stopTime = System.currentTimeMillis();
-        float elapsedTime = (float) (stopTime - startTime)/1000;
+        float elapsedTime = (float) (stopTime - startTime) / 1000;
         int pos = result.indexOf("$");
-        if(pos != -1){
-            String strDecodeTime = result.substring(pos+1);
+        if (pos != -1) {
+            String strDecodeTime = result.substring(pos + 1);
             result = result.substring(0, pos);
             pos = strDecodeTime.indexOf("$");
-            if(pos != -1){
+            if (pos != -1) {
                 strDecodeTime = strDecodeTime.substring(0, pos);
             }
 
             result = result.trim();
 
-            String strLog = "Decode Time: "+strDecodeTime + "(s) Time Total: " + Float.toString(elapsedTime) + "(s)" + " Text: "+ result;
+            String strLog = "Decode Time: " + strDecodeTime + "(s) Time Total: " + Float.toString(elapsedTime) + "(s)" + " Text: " + result;
             appendLog(strLog);
 
 
@@ -414,10 +438,10 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         String txtDisplay = result;
 
         String noAccentResult = utils.removeAccent(result).toLowerCase();
-        String []liststring = noAccentResult.split(" ");
+        String[] liststring = noAccentResult.split(" ");
         boolean b = false;
-        if(liststring.length > 0){
-            if (liststring[0].compareToIgnoreCase("goi") == 0){
+        if (liststring.length > 0) {
+            if (liststring[0].compareToIgnoreCase("goi") == 0) {
                 txtDisplay = result + " ";
                 txtDisplay = utils.mappingstringtonumber(txtDisplay);
                 txtDisplay = txtDisplay.trim();
@@ -425,22 +449,22 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
                 for (int i = 1; i < liststring.length; i++)
                     number += liststring[i] + " ";
 
-                if(number.length() > 0){
+                if (number.length() > 0) {
                     ContactList obj = new ContactList();
                     number = utils.mappingstringtonumber(number);
                     String title = "Bạn gọi cho ai?";
                     ArrayList<ContactItem> contact_list = obj.getSimilarContact(number);
-                    if(contact_list.size() == 1){
-                      //  callNumber(contact_list.get(0).getmPhoneNumber());
+                    if (contact_list.size() == 1) {
+                        //  callNumber(contact_list.get(0).getmPhoneNumber());
                         title = "Bạn muốn gọi cho?";
-                    }else if(contact_list.size() > 1){
-                    }else{
+                    } else if (contact_list.size() > 1) {
+                    } else {
                         title = "Bạn muốn gọi tới số?";
                         ContactItem item = new ContactItem();
                         item.setmPhoneNumber(number);
                         item.setmContactName(number);
                         contact_list.add(item);
-                     //   callNumber(number);
+                        //   callNumber(number);
                     }
                     startContactListActivity(contact_list, title);
 
@@ -448,7 +472,7 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
                 }
             }
         }
-        if (txtDisplay.indexOf("Error: ") != -1){
+        if (txtDisplay.indexOf("Error: ") != -1) {
             txtDisplay = "Mạng chập chờn. Mời thử lại!";
         }
         final String txtFinal = txtDisplay;
@@ -459,11 +483,11 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
             }
         });
 
-        if(!b){
+        if (!b) {
 
-            String []listcommand = result.trim().split(" ");
-            if(listcommand.length > 1){
-                if(listcommand[0].compareToIgnoreCase("mở") == 0){
+            String[] listcommand = result.trim().split(" ");
+            if (listcommand.length > 1) {
+                if (listcommand[0].compareToIgnoreCase("mở") == 0) {
                     LoadInstalledApp loadApp = new LoadInstalledApp();
                     result = utils.mappingstringtoapp(result, mMappingLanchApp);
                     loadApp.processVoiceCommand(result, mContext);
@@ -473,22 +497,33 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         }
 
     }
-    private void callNumber(String number){
+
+    private void callNumber(String number) {
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         startActivity(intent);
     }
+
     private class VoiceRecognitionServiceTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
             String text = "";
-            try{
+            try {
                 Thread.sleep(3000);
-                if(count_step_test == test_recog_text.length)
+                if (count_step_test == test_recog_text.length)
                     count_step_test = 0;
                 text = test_recog_text[count_step_test];
                 count_step_test += 1;
-            }
-            catch (InterruptedException ex){
+            } catch (InterruptedException ex) {
 
             }
 
@@ -525,18 +560,19 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
             });
 
 
-            if(result != null){
-                if(result.length() > 0){
+            if (result != null) {
+                if (result.length() > 0) {
 
                     txtSpeechInput.setText(result);
 
                     LoadInstalledApp loadApp = new LoadInstalledApp();
-                 //   loadApp.processVoiceCommand(result, mContext);
+                    //   loadApp.processVoiceCommand(result, mContext);
                 }
             }
             mStop = false;
         }
     }
+
     public void onStartService() {
 /*        Intent i = new Intent(VavActivity.this, AndroidServiceStartOnBoot.class);
 
@@ -546,11 +582,49 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    //    getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-     //   getActionBar().hide();
+        //    getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        //   getActionBar().hide();
+/*        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            List<String> missingPermissions = new ArrayList<>();
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                missingPermissions.add(android.Manifest.permission.CALL_PHONE);
+            }
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                missingPermissions.add(android.Manifest.permission.RECORD_AUDIO);
+            }
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
+                missingPermissions.add(android.Manifest.permission.WRITE_CALL_LOG);
+            }
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                missingPermissions.add(android.Manifest.permission.READ_CONTACTS);
+            }
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                missingPermissions.add(android.Manifest.permission.READ_PHONE_STATE);
+            }
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED) {
+                missingPermissions.add(android.Manifest.permission.READ_SMS);
+            }
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                missingPermissions.add(android.Manifest.permission.SEND_SMS);
+            }
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                missingPermissions.add(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            }
+
+            if (!missingPermissions.isEmpty()) {
+                String[] requestPermissions = new String[missingPermissions.size()];
+                missingPermissions.toArray(requestPermissions);
+                requestPermissions(requestPermissions, MY_NORMAL_PERMISSIONS_REQUEST);
+                return;
+            }
+        }*/
+
+
         setContentView(R.layout.activity_vav);
 
-        getSupportActionBar().hide();
+        //     getSupportActionBar().hide();
  /*       mAudioVisulizer = ((Visualizer) findViewById(R.id.visualizer));
         mAudioVisulizer.startListening();
 */
@@ -652,11 +726,12 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         startService(intent);
         ContactList.getContactList(mContext);
 
-     //   copyResource();
+        //   copyResource();
 
-   //     getMappingText();
+        //     getMappingText();
         new Thread(new Task()).start();
     }
+
     class Task implements Runnable {
 
         @Override
@@ -671,12 +746,12 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         }
 
 
-
     }
-    private void getMappingText(){
+
+    private void getMappingText() {
         mMappingLanchApp.clear();
         mMappingSynthesis.clear();
-        try{
+        try {
             InputStream is_1 = getAssets().open("map_word.txt");
             BufferedReader r_1 = new BufferedReader(new InputStreamReader(is_1));
             String line;
@@ -684,13 +759,13 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
                 mMappingSynthesis.add(line);
             }
 
-            for(int i = 0; i < mMappingSynthesis.size(); i++)
-                for (int j = i + 1; j < mMappingSynthesis.size(); j++){
-                    String []strMappingList_1 = mMappingSynthesis.get(i).split("->");
-                    String []strMappingList_2 = mMappingSynthesis.get(j).split("->");
+            for (int i = 0; i < mMappingSynthesis.size(); i++)
+                for (int j = i + 1; j < mMappingSynthesis.size(); j++) {
+                    String[] strMappingList_1 = mMappingSynthesis.get(i).split("->");
+                    String[] strMappingList_2 = mMappingSynthesis.get(j).split("->");
 
-                    if(strMappingList_1.length > 1 && strMappingList_2.length > 1){
-                        if(strMappingList_1[0].trim().length() > strMappingList_2[0].trim().length()){
+                    if (strMappingList_1.length > 1 && strMappingList_2.length > 1) {
+                        if (strMappingList_1[0].trim().length() > strMappingList_2[0].trim().length()) {
                             String tmp = mMappingSynthesis.get(i);
                             mMappingSynthesis.set(i, mMappingSynthesis.get(j));
                             mMappingSynthesis.set(j, tmp);
@@ -702,13 +777,14 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
             while ((line = r_2.readLine()) != null) {
                 mMappingLanchApp.add(line);
             }
-        }catch (IOException ex){
+        } catch (IOException ex) {
 
         }
     }
-    private void copyResource(){
 
-        try{
+    private void copyResource() {
+
+        try {
             InputStream is_1 = getAssets().open("acronym.txt");
             BufferedReader r_1 = new BufferedReader(new InputStreamReader(is_1));
             StringBuilder total_1 = new StringBuilder();
@@ -725,11 +801,12 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
                 total_2.append(line).append('\n');
             }
             writeStringAsFile(total_2.toString(), getUnitofMeasureConfig());
-        }catch (IOException ex){
+        } catch (IOException ex) {
 
         }
 
     }
+
     public static void writeStringAsFile(final String fileContents, String fileName) {
         try {
             FileOutputStream stream = new FileOutputStream(fileName);
@@ -737,13 +814,13 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
             stream.write(fileContents.getBytes());
             stream.close();
 
-        }catch (IOException e){
+        } catch (IOException e) {
 
-        }
-        finally {
+        } finally {
 
         }
     }
+
     private void startAnimationThreadStuff(long delay) {
         if (updateThread != null && updateThread.isAlive())
             updateThread.interrupt();
@@ -752,7 +829,7 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(!progressView.isIndeterminate()) {
+                if (!progressView.isIndeterminate()) {
                     progressView.setProgress(0f);
                     // Run thread to update progress every quarter second until full
                     updateThread = new Thread(new Runnable() {
@@ -777,12 +854,13 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
             }
         }, delay);
     }
+
     private void onRecognizerKaldi(boolean start) {
         if (!start) {
             btnSpeak.setImageResource(R.mipmap.ico_mic_stop);
             _currentRecognizer.start();
             mStartRecording = true;
-          //  lst_dialog.show();
+            //  lst_dialog.show();
 
         } else {
             btnSpeak.setImageResource(R.mipmap.ico_mic);
@@ -791,10 +869,11 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
             mTxtTouch.setText("Đang xử lý...");
         }
     }
+
     /**
      * Showing google speech input dialog
-     * */
-    public void startContactListActivity(final ArrayList<ContactItem> conlist, String title){
+     */
+    public void startContactListActivity(final ArrayList<ContactItem> conlist, String title) {
 
         final AlertDialog.Builder mCallContactDialog;
         ListView mContactListView;
@@ -831,6 +910,7 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         startActivity(intent);
 */
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -847,8 +927,8 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-           startActivity(new Intent(this, SettingsActivity.class));
-         //   startContactListActivity(ContactList.mContactList);
+            startActivity(new Intent(this, SettingsActivity.class));
+            //   startContactListActivity(ContactList.mContactList);
             return true;
         }
         if (id == R.id.action_syn) {
@@ -876,11 +956,14 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onResume() {
         // TODO Auto-generated method stub
+        checkOverlayPermission();
         super.onResume();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -888,13 +971,13 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
     }
 
     // UPSTREAM channel. its servicing a thread and should have its own handler
-     Handler messageHandler2 = new Handler() {
+    Handler messageHandler2 = new Handler() {
 
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 1: // GET DOWNSTREAM json
-                  stopRecording();
+                    stopRecording();
 
                     break;
                 case 2:
@@ -934,7 +1017,7 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         }
     }; // UPstream handler end
 
-    public void audioSynthesisPlayer(String filename){
+    public void audioSynthesisPlayer(String filename) {
         //set up MediaPlayer
 
         MediaPlayer mp = new MediaPlayer();
@@ -964,18 +1047,15 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
             e.printStackTrace();
         }
     }
-    private void bringApplicationToFront()
-    {
+
+    private void bringApplicationToFront() {
 
         Intent notificationIntent = new Intent(this, VavActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-        try
-        {
+        try {
             pendingIntent.send();
-        }
-        catch (PendingIntent.CanceledException e)
-        {
+        } catch (PendingIntent.CanceledException e) {
             e.printStackTrace();
         }
     }
@@ -1002,7 +1082,8 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
                 return super.dispatchKeyEvent(event);
         }
     }
-    public boolean audioPlayer(String filename){
+
+    public boolean audioPlayer(String filename) {
         //set up MediaPlayer
         MediaPlayer mp = new MediaPlayer();
 
@@ -1010,13 +1091,14 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
             mp.setDataSource(filename);
             mp.prepare();
             mp.start();
-            return  true;
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return  false;
+            return false;
         }
     }
-    private void doSynthesis(String content){
+
+    private void doSynthesis(String content) {
         String strServer = "http://10.30.153.42:59125";
         String localeType = "en_US";
         String textInput = String.format("\"%s\"", content);
@@ -1024,6 +1106,7 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
 
         new DownloadFileServiceTask().execute(strServer, localeType, textInput, savefilePath);
     }
+
     private class DownloadFileServiceTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -1036,45 +1119,53 @@ public class VavActivity extends ActionBarActivity  implements Recognizer.Listen
         @Override
         protected void onPostExecute(String result) {
 
-            if(result.length() == 0){
-              audioPlayer(getSynthesisFilename());
-            }else{
+            if (result.length() == 0) {
+                audioPlayer(getSynthesisFilename());
+            } else {
                 txtSpeechInput.setText("Lỗi xẩy ra, Chưa tổng hợp được!: " + result);
             }
 
         }
     }
-    public void appendLog(String text)
-    {
-        String filepath = Environment.getExternalStorageDirectory().getPath();
-        File file = new File(filepath,AUDIO_RECORDER_FOLDER);
 
-        if(!file.exists()){
+    public void appendLog(String text) {
+        String filepath = Environment.getExternalStorageDirectory().getPath();
+        File file = new File(filepath, AUDIO_RECORDER_FOLDER);
+
+        if (!file.exists()) {
             file.mkdirs();
         }
 
 
-        File logFile = new File(file.getAbsolutePath() + "/" +"logtime.txt");
-        if (!logFile.exists())
-        {
-            try
-            {
+        File logFile = new File(file.getAbsolutePath() + "/" + "logtime.txt");
+        if (!logFile.exists()) {
+            try {
                 logFile.createNewFile();
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
         try {
-            String filename = file.getAbsolutePath() + "/" +"logtime.txt";
+            String filename = file.getAbsolutePath() + "/" + "logtime.txt";
             FileWriter fw = new FileWriter(filename, true);
             fw.write(text + "\n");
             fw.close();
         } catch (IOException ioe) {
         }
 
+    }
+
+    private void checkOverlayPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !canDrawOverlays(this)) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, MY_OVERLAY_PERMISSIONS_REQUEST);
+        }
+    }
+
+    public static boolean canDrawOverlays(Context context) {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Settings.canDrawOverlays(context);
     }
 
 
