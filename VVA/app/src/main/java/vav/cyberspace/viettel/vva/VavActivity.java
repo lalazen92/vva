@@ -1,6 +1,7 @@
 package vav.cyberspace.viettel.vva;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -20,6 +21,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.SystemClock;
 import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -39,8 +41,12 @@ import android.widget.Toast;
 
 
 import org.firezenk.audiowaves.Visualizer;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -49,6 +55,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -349,8 +363,10 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
                     //  btnSpeak.setImageResource(R.mipmap.loading);
                 }
             });
-            convertWavToFlac(getFilename(), getFilenameFlac());
-            new VoiceRecognitionServiceTask().execute(getFilenameFlac());
+            // convertWavToFlac(getFilename(), getFilenameFlac());
+            //  new VoiceRecognitionServiceTask().execute(getFilenameFlac());
+
+            new WebService(mContext, getFilename()).execute();
         }
 
     }
@@ -374,6 +390,7 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
         Wav2Flac flacEncoder = new Wav2Flac();   // <---- Error
         flacEncoder.convertWavToFlac(wavFilename, flacFilename);
     }
+
 
     private class RecognizerServiceTask extends AsyncTask<String, Void, String> {
         @Override
@@ -513,36 +530,195 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
         startActivity(intent);
     }
 
+
+    public class WebService extends AsyncTask<String, Void, String> {
+
+        private Context mContext;
+        private String path = "";
+
+
+        public WebService(Context context, String url) {
+            this.mContext = context;
+            this.path = url;
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                final File uploadFile = new File(path);
+                String duy = Long.toString(uploadFile.length());
+                String boundary = Long.toHexString(System.currentTimeMillis());
+                String name = uploadFile.getName();
+                int file_size = Integer.parseInt(String.valueOf(uploadFile.length()));
+                String POST_URL = "http://10.30.154.11:8234/voices/api/v1/decode";
+
+                String charset = "UTF-8";
+                URLConnection connection = new URL(POST_URL).openConnection();
+                connection.setDoOutput(true);
+                connection.setRequestProperty("Accept", "*/*");
+                connection.setRequestProperty("Content-Length", duy);
+                connection.setRequestProperty("Content-Type", "audio/x-wav");
+                connection.setRequestProperty("SampleRate", "16000");
+                connection.setRequestProperty("type", "wav");
+                connection.setRequestProperty("QueueType", "decode_jobs_opendomain");
+                connection.setRequestProperty("name", "test");
+//
+
+                OutputStream output = connection.getOutputStream();
+                PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, charset), true);
+                byte[] array = getBytesFromFile(uploadFile);
+
+                output.write(array);
+                // Files.copy(uploadFile.toPath(), output);
+                output.flush();
+                // System.out.println(connection.getHeaderFields().toString());
+                //get response body as input stream
+                BufferedInputStream is = new BufferedInputStream(connection.getInputStream());
+                BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                String inputLine = "";
+                StringBuffer sb = new StringBuffer("");
+                while ((inputLine = br.readLine()) != null) {
+                    sb.append(inputLine);
+                }
+                String result = sb.toString();
+                System.out.println(result);
+                return result;
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            //  super.onPostExecute(s);
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mTxtTouch.setText("Chạm để nói");
+                    progressView.setVisibility(View.GONE);
+                    btnSpeak.setVisibility(View.VISIBLE);
+                    mWaveformView.setVisibility(View.GONE);
+                    btnSpeak.setImageResource(R.mipmap.ico_mic);
+                }
+            });
+
+
+            if (result != null) {
+                if (result.length() > 0) {
+
+                    //result = result.replace("", "");
+                    try {
+                        JSONObject jsonObj = new JSONObject(result);
+                        txtSpeechInput.setText(jsonObj.getString("text"));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    // LoadInstalledApp loadApp = new LoadInstalledApp();
+                    //   loadApp.processVoiceCommand(result, mContext);
+                }
+            }
+            mStop = false;
+        }
+    }
+
+    public static byte[] getBytesFromFile(File file) throws IOException {
+        // Get the size of the file
+        long length = file.length();
+
+        // You cannot create an array using a long type.
+        // It needs to be an int type.
+        // Before converting to an int type, check
+        // to ensure that file is not larger than Integer.MAX_VALUE.
+        if (length > Integer.MAX_VALUE) {
+            // File is too large
+            throw new IOException("File is too large!");
+        }
+
+        // Create the byte array to hold the data
+        byte[] bytes = new byte[(int) length];
+
+        // Read in the bytes
+        int offset = 0;
+        int numRead = 0;
+
+        InputStream is = new FileInputStream(file);
+        try {
+            while (offset < bytes.length
+                    && (numRead = is.read(bytes, offset, bytes.length - offset)) >= 0) {
+                offset += numRead;
+            }
+        } finally {
+            is.close();
+        }
+
+        // Ensure all the bytes have been read in
+        if (offset < bytes.length) {
+            throw new IOException("Could not completely read file " + file.getName());
+        }
+        return bytes;
+    }
+
     private class VoiceRecognitionServiceTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
             String text = "";
+            final int mid = 1;
+            final String POST_URL = "http://10.30.154.11:8234/voices/api/v1/decode";
+            final File uploadFile = new File("/home/maituan/5.wav"); //path to file
+
+            String boundary = Long.toHexString(System.currentTimeMillis());
+            String CRLF = "\r\n";
+            String charset = "UTF-8";
+            URLConnection connection = null;
             try {
-                Thread.sleep(3000);
-                if (count_step_test == test_recog_text.length)
-                    count_step_test = 0;
-                text = test_recog_text[count_step_test];
-                count_step_test += 1;
-            } catch (InterruptedException ex) {
+                connection = new URL(POST_URL).openConnection();
 
-            }
-
-            return text;
-            // params comes from the execute() call: params[0] is the url.
-          /*  try {
-                GoogleRecognizer mRecognizer = new GoogleRecognizer("vi", "AIzaSyC0uaoJq9Kdp1aAxJv_ZucOp8SUirZO7BA");
-                GoogleResponse respone = mRecognizer.getRecognizedDataForFlac(urls[0], 10);
-                if(count_step_test == test_recog_text.length)
-                    count_step_test = 0;
-                String text = "";
-                text = test_recog_text[count_step_test];
-                count_step_test += 1;
-
-                return text;
-              //  return respone.getResponse();
+                connection.setDoOutput(true);
+                connection.setRequestProperty("Accept", "*/*");
+                connection.setRequestProperty("Content-Length", Long.toString(uploadFile.length()));
+                connection.setRequestProperty("Content-Type", "audio/x-wav");
+                connection.setRequestProperty("SampleRate", "16000");
+                connection.setRequestProperty("type", "wav");
+                connection.setRequestProperty("QueueType", "decode_jobs_opendomain");
+                connection.setRequestProperty("name", "test");
             } catch (IOException e) {
-                return "Unable to retrieve web page. URL may be invalid.";
-            }*/
+                e.printStackTrace();
+            }
+//
+            try {
+                try (
+                        OutputStream output = connection.getOutputStream();
+                        PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, charset), true);
+                ) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        Files.copy(uploadFile.toPath(), output);
+                    }
+                    output.flush();
+                    // System.out.println(connection.getHeaderFields().toString());
+                    //get response body as input stream
+                    BufferedInputStream is = new BufferedInputStream(connection.getInputStream());
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    String inputLine = "";
+                    StringBuffer sb = new StringBuffer("");
+                    while ((inputLine = br.readLine()) != null) {
+                        sb.append(inputLine);
+                    }
+                    String result = sb.toString();
+
+
+                    return result;
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return "";
         }
 
         // onPostExecute displays the results of the AsyncTask.
@@ -631,10 +807,10 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
         mResourcePath = getResourcePathConfig();
         mContext = getApplicationContext();
         mPreferences = PreferenceManager.getInstance();
-        LoadInstalledApp.mHandler = messageHandler2;
+        //   LoadInstalledApp.mHandler = messageHandler2;
 
-        LoadInstalledApp loadApp = new LoadInstalledApp();
-        loadApp.getPackageInforMap(mContext);
+        // LoadInstalledApp loadApp = new LoadInstalledApp();
+        //   loadApp.getPackageInforMap(mContext);
         txtSpeechInput = (TextView) findViewById(R.id.txtSpeechInput);
         mTxtTouch = (TextView) findViewById(R.id.txtTouch);
 
