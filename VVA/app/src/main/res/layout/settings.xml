@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
-              android:orientation="vertical">
-   <!-- <include layout="@layout/toolbar_settings" />-->
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+    <!-- <include layout="@layout/toolbar_settings" />-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/layout5"
@@ -21,15 +23,16 @@
             android:minHeight="60dp"
             android:paddingBottom="10dp"
             android:paddingRight="10dp"
-            android:paddingTop="10dp" >
+            android:paddingTop="10dp"
+            android:visibility="gone">
 
             <CheckBox
                 android:id="@+id/chkDecode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="Sử dụng decode của Google"
-                android:textColor="@color/white"
-                android:checked="true" />
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 
@@ -41,17 +44,19 @@
             android:minHeight="60dp"
             android:paddingBottom="10dp"
             android:paddingRight="10dp"
-            android:paddingTop="10dp" >
+            android:paddingTop="10dp"
+            android:visibility="gone">
 
             <CheckBox
                 android:id="@+id/chkReadMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="Tự động đọc tin nhắn"
-                android:textColor="@color/white"
-                android:checked="true" />
+                android:textColor="@color/white" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/layout7"
             android:layout_width="match_parent"
@@ -60,17 +65,19 @@
             android:minHeight="60dp"
             android:paddingBottom="10dp"
             android:paddingRight="10dp"
-            android:paddingTop="10dp" >
+            android:paddingTop="10dp"
+            android:visibility="gone">
 
             <CheckBox
                 android:id="@+id/chkHsmmm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="Sử dụng HSMM"
-                android:textColor="@color/white"
-                android:checked="true" />
+                android:textColor="@color/white" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/layout3"
             android:layout_width="match_parent"
@@ -79,17 +86,17 @@
             android:minHeight="60dp"
             android:paddingBottom="10dp"
             android:paddingRight="10dp"
-            android:paddingTop="10dp" >
+            android:paddingTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:paddingLeft="10dp"
-                android:textColor="@color/white"
                 android:width="70dp"
-                android:text="Địa chỉ:" />
+                android:paddingLeft="10dp"
+                android:text="Địa chỉ:"
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/txtServer"
@@ -97,8 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                />
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 
@@ -110,17 +116,17 @@
             android:minHeight="60dp"
             android:paddingBottom="10dp"
             android:paddingRight="10dp"
-            android:paddingTop="10dp" >
+            android:paddingTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:paddingLeft="10dp"
-                android:textColor="@color/white"
                 android:width="70dp"
-                android:text="Cổng:" />
+                android:paddingLeft="10dp"
+                android:text="Cổng:"
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/txtPort"
@@ -128,12 +134,30 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                />
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnDefaut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Defaut" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Save" />
     </LinearLayout>
 
 

@@ -53,14 +53,14 @@ public class PreferenceManager {
 		putString(Name.SERVERNAME, name);
 	}
 	public String getServerName() {
-		return mPrefs.getString(Name.SERVERNAME, "10.30.153.42");
+		return mPrefs.getString(Name.SERVERNAME, "http://203.113.152.90");
 	}
 
 	public void setPortName(String name) {
 		putString(Name.PORTNAME, name);
 	}
 	public String getPortName() {
-		return mPrefs.getString(Name.PORTNAME, "8888");
+		return mPrefs.getString(Name.PORTNAME, "8234");
 	}
 	private void putBoolean(String name, boolean value) {
 		mPrefs.edit().putBoolean(name, value).apply();

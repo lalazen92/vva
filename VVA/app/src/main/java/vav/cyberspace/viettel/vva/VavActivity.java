@@ -350,24 +350,25 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
         mStop = true;
 
         startTime = System.currentTimeMillis();
-        if (mPreferences.getRecogType().compareToIgnoreCase("nogo") == 0) {
-            decodeVoice();
-        } else if (mPreferences.getRecogType().compareToIgnoreCase("go") == 0) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mTxtTouch.setText("Đang xử lý...");
-                    progressView.setVisibility(View.VISIBLE);
-                    btnSpeak.setVisibility(View.GONE);
-                    mWaveformView.setVisibility(View.GONE);
-                    //  btnSpeak.setImageResource(R.mipmap.loading);
-                }
-            });
-            // convertWavToFlac(getFilename(), getFilenameFlac());
-            //  new VoiceRecognitionServiceTask().execute(getFilenameFlac());
-
-            new WebService(mContext, getFilename()).execute();
-        }
+        new WebService(mContext, getFilename()).execute();
+//        if (mPreferences.getRecogType().compareToIgnoreCase("nogo") == 0) {
+//            decodeVoice();
+//        } else if (mPreferences.getRecogType().compareToIgnoreCase("go") == 0) {
+//            runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    mTxtTouch.setText("Đang xử lý...");
+//                    progressView.setVisibility(View.VISIBLE);
+//                    btnSpeak.setVisibility(View.GONE);
+//                    mWaveformView.setVisibility(View.GONE);
+//                    //  btnSpeak.setImageResource(R.mipmap.loading);
+//                }
+//            });
+//            // convertWavToFlac(getFilename(), getFilenameFlac());
+//            //  new VoiceRecognitionServiceTask().execute(getFilenameFlac());
+//
+//
+//        }
 
     }
 
@@ -550,7 +551,11 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
                 String boundary = Long.toHexString(System.currentTimeMillis());
                 String name = uploadFile.getName();
                 int file_size = Integer.parseInt(String.valueOf(uploadFile.length()));
-                String POST_URL = "http://10.30.154.11:8234/voices/api/v1/decode";
+                //  String POST_URL = "http://10.30.154.11:8234/voices/api/v1/decode";
+
+                String pathUrl = mPreferences.getServerName();
+                String port = mPreferences.getPortName();
+                String POST_URL = pathUrl + ":" + port + "/voices/api/v1/decode";
 
                 String charset = "UTF-8";
                 URLConnection connection = new URL(POST_URL).openConnection();
@@ -758,32 +763,34 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.i("duypq3", "1=" + System.currentTimeMillis());
         //    getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         //   getActionBar().hide();
-/*        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
             List<String> missingPermissions = new ArrayList<>();
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                missingPermissions.add(android.Manifest.permission.CALL_PHONE);
-            }
+//            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//                missingPermissions.add(android.Manifest.permission.CALL_PHONE);
+//            }
             if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
                 missingPermissions.add(android.Manifest.permission.RECORD_AUDIO);
             }
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
-                missingPermissions.add(android.Manifest.permission.WRITE_CALL_LOG);
-            }
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-                missingPermissions.add(android.Manifest.permission.READ_CONTACTS);
-            }
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                missingPermissions.add(android.Manifest.permission.READ_PHONE_STATE);
-            }
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED) {
-                missingPermissions.add(android.Manifest.permission.READ_SMS);
-            }
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-                missingPermissions.add(android.Manifest.permission.SEND_SMS);
-            }
+//            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
+//                missingPermissions.add(android.Manifest.permission.WRITE_CALL_LOG);
+//            }
+//            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+//                missingPermissions.add(android.Manifest.permission.READ_CONTACTS);
+//            }
+//            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+//                missingPermissions.add(android.Manifest.permission.READ_PHONE_STATE);
+//            }
+//            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED) {
+//                missingPermissions.add(android.Manifest.permission.READ_SMS);
+//            }
+//            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+//                missingPermissions.add(android.Manifest.permission.SEND_SMS);
+//            }
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 missingPermissions.add(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -795,7 +802,7 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
                 requestPermissions(requestPermissions, MY_NORMAL_PERMISSIONS_REQUEST);
                 return;
             }
-        }*/
+        }
 
 
         setContentView(R.layout.activity_vav);
@@ -818,6 +825,8 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
         WaveformView.mHandler = messageHandler2;
         mWaveformView = (WaveformView) findViewById(R.id.waveform_view);
         mWaveformView.initMessenger();
+
+        Log.i("duypq3", "2=" + System.currentTimeMillis());
 
         SurfaceHolder sfhTrackHolder = mWaveformView.getHolder();
         sfhTrackHolder.setFormat(PixelFormat.TRANSPARENT);
@@ -860,7 +869,7 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
             }
         });
         progressView = (CircularProgressView) findViewById(R.id.progress_view);
-
+        Log.i("duypq3", "3=" + System.currentTimeMillis());
         // Test the listener with logcat messages
         progressView.addListener(new CircularProgressViewAdapter() {
             @Override
@@ -895,17 +904,18 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
         }*/
 
         ExtAudioRecorderModified.mHandler = messageHandler2;
-
+        Log.i("duypq3", "4=" + System.currentTimeMillis());
         Intent intent = new Intent(VavActivity.this, FloatingFaceBubbleService.class);
         final Messenger msg = new Messenger(messageHandler2);
         intent.putExtra("MESSENGER", msg);
         startService(intent);
-        ContactList.getContactList(mContext);
+        //   ContactList.getContactList(mContext);
 
         //   copyResource();
 
         //     getMappingText();
-        new Thread(new Task()).start();
+        Log.i("duypq3", "5=" + System.currentTimeMillis());
+        //new Thread(new Task()).start();
     }
 
     class Task implements Runnable {
@@ -1136,6 +1146,7 @@ public class VavActivity extends AppCompatActivity implements Recognizer.Listene
     @Override
     protected void onResume() {
         // TODO Auto-generated method stub
+        Log.i("duypq3", "6=" + System.currentTimeMillis());
         checkOverlayPermission();
         super.onResume();
     }
